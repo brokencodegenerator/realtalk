@@ -26,6 +26,7 @@
                 <span class="glyphicon glyphicon-plus"></span> Create</button></li>
             </ul>
             <ul class="nav nav-sidebar" id="listings">
+            <li class="listing">Test Listing 1 <span class="glyphicon glyphicon-gear"></span></li>
             </ul>
         </div>
         <form id="createListingForm" class="form-horizontal" style="display:none">
@@ -136,15 +137,32 @@
     </div>
 </div>
 
+
+<div>
+  
+</div>
+
+
+
+
+
+
 </body>
 <script>
     $('#createListingButton').click(function () {
         document.getElementById('createListingForm').style.display = "block";
     });
+    $('.listing').click( function(this) {
+
+    });
+
+
+
+    
     $('.btn').button();
     $('#saveListingButton').click(function () {
       //save to database
-      
+      document.getElementById('listings').append();
       //modal popup that confirms save change
       document.getElementById('createListingForm').style.display = "none";
       //show that listing as completed in the panel
