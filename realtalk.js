@@ -4,6 +4,7 @@ if (Meteor.isClient) {
       ""        : "main",
       "index"   : "main",
       "Realtor" : "Realtor"
+
     },
     main: function(page) {
       document.body.innerHTML = "";
