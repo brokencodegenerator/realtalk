@@ -1,18 +1,19 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("counter", 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
+  var Router = Backbone.Router.extend({
+    routes: {
+      ""      : "main",
+      ":page" : "main" //this will be http://your_domain/
+    },
+    main: function(page) {
+      document.body.innerHTML = "";
+      page = page?page:"index";
+      UI.insert(UI.render(Template[page]), document.body);
+      document.body.style.padding = "0px 0px 0px 0px";
     }
   });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set("counter", Session.get("counter") + 1);
-    }
+  var app = new Router;
+  Meteor.startup(function () {
+    Backbone.history.start({pushState: true});
   });
 }
 
