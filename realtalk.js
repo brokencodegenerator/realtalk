@@ -1,8 +1,9 @@
 if (Meteor.isClient) {
   var Router = Backbone.Router.extend({
     routes: {
-      ""      : "main",
-      ":page" : "main" //this will be http://your_domain/
+      ""        : "main",
+      "index"   : "main",
+      "Realtor" : "main"
     },
     main: function(page) {
       document.body.innerHTML = "";
