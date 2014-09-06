@@ -20,35 +20,131 @@
         </div><!--/.navbar-collapse -->
     </div>
 </div>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Create</button></li>
-                </ul>
-            <ul class="nav nav-sidebar">
-                <p>Listings</p>
+                <li><p>Listings</p><button type="button" id="createListingButton" class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span> Create</button></li>
             </ul>
-            <ul class="nav nav-sidebar">
-                <li>Test Listing</li>
+            <ul class="nav nav-sidebar" id="listings">
             </ul>
         </div>
-        <div id= "newListingForm" class="col-sm-9 col-md-10">
-            <form class="form-horizontal">
-                <fieldset>
-                    <legend>New Listing</legend>
-                <div class="form-group">
-                    <label for="inputAddress" class="col-lg-2 control-label"> Email</label>
-                           <div class="col-lg-10">
-                               <input type="text" class="form-control" id="inputAddress" placeholder="Address">
-                           </div>
-                </div>
-                </fieldset>
-            </form>
-        </div>
+        <form id="createListingForm" class="form-horizontal" style="display:none">
+            <fieldset>
+
+            <!-- Form Name -->
+            <legend>Form Name</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="addressInput">Address</label>  
+              <div class="col-md-8">
+              <input id="addressInput" name="addressInput" type="text" placeholder="Address" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="priceInput">Price</label>  
+              <div class="col-md-4">
+              <input id="priceInput" name="priceInput" type="text" placeholder="$800/month" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="BedroomInput">Bedrooms</label>  
+              <div class="col-md-4">
+              <input id="BedroomInput" name="BedroomInput" type="text" placeholder="i.e. 2" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="bathroomInput">Bathrooms</label>  
+              <div class="col-md-4">
+              <input id="bathroomInput" name="bathroomInput" type="text" placeholder="i.e. 1.5" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="squareftInput">Sq. ft.</label>  
+              <div class="col-md-4">
+              <input id="squareftInput" name="squareftInput" type="text" placeholder="1,250" class="form-control input-md">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="acreInput">Acres</label>  
+              <div class="col-md-4">
+              <input id="acreInput" name="acreInput" type="text" placeholder="1.5" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="yearBuiltInput">Year Built</label>  
+              <div class="col-md-4">
+              <input id="yearBuiltInput" name="yearBuiltInput" type="text" placeholder="1905" class="form-control input-md">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="styleInput">Style</label>  
+              <div class="col-md-4">
+              <input id="styleInput" name="styleInput" type="text" placeholder="i.e. colonial, cottage" class="form-control input-md">
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="propertyTypeInput">Property Type</label>  
+              <div class="col-md-4">
+                <input id="propertyTypeInput" name="propertyTypeInput" type="text" placeholder="" class="form-control input-md">
+                
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="amenitiesInput">Amenities</label>
+              <div class="col-md-4">                     
+                <textarea class="form-control" id="amenitiesInput" name="amenitiesInput">Washer/Dryer, Hot Tub, RollerCoaster, etc...</textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Pictures</label>  <span class="glyphicon glyphicon-plus btn"></span>
+              <!--Jquery upload file library, add click handler for add picture button-->
+            </div>
+            
+            <div class="col-md-9">
+                <button type="button" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-success">Generate QR Code</button>
+            </div>
+            </fieldset>
+        </form>
     </div>
 </div>
 
 </body>
+<script>
+    $('#createListingButton').click(function () {
+        document.getElementById('createListingForm').style.display = "block";
+    })
+    $('.btn').button();
+</script>
+
 </html>
+
