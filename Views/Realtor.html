@@ -156,6 +156,7 @@
   <div class="button-group">
     <button id="createSurveyQuestion" type="button" class="btn btn-default">Create a new question</button>
   </div>
+  <div id="qrCode"></div>
 </div>
 
 
@@ -202,21 +203,14 @@
       amenitiesInput
     ));
   });
-  function sleep(millis, callback) {
-  setTimeout(function()
-  { callback(); }
-  , millis);
-  }
   $('#generateQRCode').click(function () {
   //call jquery method with survey id of the survey that was just saved
   });
   $(document).ready(function(){
-    sleep(1500,function(){
-      var one = usersTable.findOne();
-      console.log(one);
-      var email = one?one.email:false;
-      email = email?email:"BatesMatthewJ@Gmail.com";
-      $('#userName').html(email);
+    sleep(500,function(){
+      var email = getUser();
+      email = email?email:"Not Logged In";
+      $('#userName').html(getUser());
     });
   })
   $('.listing .address').click(function(){
@@ -228,13 +222,23 @@
 .form-group div{
   width:400px;
 }
-.address{
-  width:100px;
-  text-align:left;
+.listing.row{
+  width:275px;
+  background-color: #222;
+  border-radius: 5px;
+  padding: 15px;
+  margin:auto;
+  margin-bottom:5px;
+  color:#fff;
 }
-.edit{
-  width:100px;
-  text-align:right;
+.address{
+  float:left;
+}
+.edit{;
+  float:right;
+}
+.selected{
+  background-color: #823;
 }
 </style>
 </body>

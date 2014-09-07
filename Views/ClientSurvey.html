@@ -1,0 +1,56 @@
+<template name="ClientSurvey">
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		    <div class="navbar-header" style="width:100%;">
+		        <div class="container-fluid" style="width:100%">
+		            <div class="navbar-brand" style="width:100%">
+		                <img src='img/realtalk4size.png' style="height:45px;margin-left:auto;margin-right:auto;margin-top:-10px">
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div style="height:60px"></div>
+		<div>
+			<img src="img/house1.jpg" class="housePic">
+			<h2 class="address">1183 Schar Rd, 25940</h2>
+		</div>
+		<ul id="surveyContainer" class="survey">
+		</ul>
+	</body>
+	<script>
+	$(document).ready(function(){
+		sleep(500,funtion(){
+			var listingID = getCookie('listingID');
+			var questions = getQuestions(listingID);
+			for(var i = 0; i &lt; questions.length; i++){
+				addQuestion(questions[i],i+1);
+			}
+		});
+	})
+	</script>
+	<style>
+	.row.maxwidth{
+		margin-left:0px;
+		margin-right:0px;
+	}
+	.max-width{
+		max-width:100%;
+	}
+	.btn-thrd{
+		width:40%;
+	}
+	.housePic{
+		max-width:90%;
+		height:200px;
+	}
+	.address{
+		max-width:80%;
+		margin:auto;
+		margin-top:10px;
+		color:#000;
+	}
+	.large{
+		width:80%;
+	}
+	</style>
+</template>

@@ -97,10 +97,13 @@
                     var userID = undefined;
                     if(userID = logUserIn(email, password)){
                         console.log(userID+' logged in!');
-                        setUser(userID);
+                        setUser(email);
+                        setUserID(userID);
                         document.location.href = "/Realtor";
                     }else if(userID = addUser(email, password)){
                         console.log(userID+' created!');
+                        setUser(email);
+                        setUserID(userID);
                         document.location.href = "/Realtor";
                     }else{
                         alert('Incorrect login info!');

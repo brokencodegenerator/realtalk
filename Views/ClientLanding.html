@@ -1,0 +1,67 @@
+<template name="ClientLanding">
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		    <div class="navbar-header" style="width:100%;">
+		        <div class="container-fluid" style="width:100%">
+		            <div class="navbar-brand" style="width:100%">
+		                <img src='/img/realtalk4size.png' style="height:45px;margin-left:auto;margin-right:auto;margin-top:-10px">
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div>
+			<h2>Welcome!</h2>
+		</div>
+		<br>
+		<div class="row max-width" style="margin:0px">
+			<a href="#"><img src="/img/survey.png" id="surveyButton" class="btn-thrd"></a>
+			<a href="#"><img src="/img/mobileinfo.png" id="infoButton" class="btn-thrd"></a>
+		</div>
+		<div class="row max-width">
+			<h2 class="btn-thrd" style="margin:auto;display:inline-block">Review</h2>
+			<h2 class="btn-thrd" style="margin:auto;display:inline-block">Info</h2>
+		</div>
+		<br>
+		<div>
+			<img src="/img/house1.jpg" class="housePic overlayed">
+			<h2 class="address">1183 Schar Rd, 25940</h2>
+		</div>
+		<br>
+		<div>
+			<h3 style="color:#000">NOT QUITE PERFECT?</h3>
+			<div class="btn btn-warning btn-lg large">MORE LISTINGS</div>
+		</div>
+	</body>
+	<script>
+		$('#surveyButton').click(function(){
+            document.location.href = "/ClientSurvey";
+		})
+		$('#infoButton').click(function(){
+            document.location.href = "/ClientInfo";
+		})
+	</script>
+	<style>
+	.row.maxwidth{
+		margin-left:0px;
+		margin-right:0px;
+	}
+	.max-width{
+		max-width:100%;
+	}
+	.btn-thrd{
+		width:40%;
+	}
+	.housePic{
+		max-width:90%;
+	}
+	.address{
+		max-width:80%;
+		margin:auto;
+		margin-top:10px;
+		color:#000;
+	}
+	.large{
+		width:80%;
+	}
+	</style>
+</template>

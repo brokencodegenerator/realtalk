@@ -5,10 +5,10 @@ listingsTable = new Meteor.Collection("Listings");
 if (Meteor.isClient) {
   var Router = Backbone.Router.extend({
     routes: {
-      ""        : "main",
-      "index"   : "main",
-      "Realtor" : "Realtor"
-
+      "listing/:param" : "listings",
+      ""                : "main",
+      ":page"           : "main",
+      ".*"              : ""
     },
     main: function(page) {
       document.body.innerHTML = "";
@@ -16,10 +16,10 @@ if (Meteor.isClient) {
       UI.insert(UI.render(Template[page]), document.body);
       document.body.style.padding = "0px 0px 0px 0px";
     },
-    Realtor: function(page) {
+    listings: function(page, ID){
       document.body.innerHTML = "";
-      page = page?page:"Realtor";
-      UI.insert(UI.render(Template[page]), document.body);
+      document.cookie = "listingID=" + ID;
+      UI.insert(UI.render(Template["ClientLanding"]), document.body);
       document.body.style.padding = "0px 0px 0px 0px";
     }
   });
@@ -35,7 +35,7 @@ if (Meteor.isClient) {
     "click": function () {
       
       document.getElementById('createListingForm').style.display = "block";
-      console.log(this);
+      console.log($(this).parent().first());
       $('#addressInput')     .val(this.address);
       $('#BedroomInput')     .val(this.bedrooms);
       $('#bathroomInput')    .val(this.baths);
@@ -48,10 +48,23 @@ if (Meteor.isClient) {
       $('#amenitiesInput')   .val(this.amenities);
     }
   });
+
+  Template.edit.events({
+    "click": function () {
+      //Pull up survey questions
+    }
+  });
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
+}
+
+
+sleep = function(millis, callback) {
+setTimeout(function()
+{ callback(); }
+, millis);
 }
