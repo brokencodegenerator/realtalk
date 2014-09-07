@@ -228,19 +228,27 @@
 .form-group div{
   width:400px;
 }
+.address{
+  width:100px;
+  text-align:left;
+}
+.edit{
+  width:100px;
+  text-align:right;
+}
 </style>
 </body>
 </template>
 <template name="listing_list">
   <ul class="nav nav-sidebar" id="listings">
     {{#each listings}}
-      <li class='listing'>{{> address}}{{> edit}}</li>
+      <li class='listing row'>{{> address}}{{> edit}}</li>
     {{/each}}
   </ul>
 </template>
 <template name="address">
-  <span class="address">{{address}}</span>
+  <div class="address span6">{{address}}</div>
 </template>
 <template name="edit">
-  <span class='glyphicon glyphicon-gear edit'></span>
+  <div class='edit span6'>[survey]</div>
 </template>
