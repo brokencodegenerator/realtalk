@@ -27,6 +27,27 @@ if (Meteor.isClient) {
   Meteor.startup(function () {
     Backbone.history.start({pushState: true});
   });
+
+  Template.listing_list.listings = function(){
+    return listingsTable.find();
+  }
+  Template.address.events({
+    "click": function () {
+      
+      document.getElementById('createListingForm').style.display = "block";
+      console.log(this);
+      $('#addressInput')     .val(this.address);
+      $('#BedroomInput')     .val(this.bedrooms);
+      $('#bathroomInput')    .val(this.baths);
+      $('#squareftInput')    .val(this.squareFootage);
+      $('#acreInput')        .val(this.lotSize);
+      $('#priceInput')       .val(this.price);
+      $('#yearBuiltInput')   .val(this.yearBuilt); 
+      $('#styleInput')       .val(this.style);
+      $('#propertyTypeInput').val(this.propertyType);
+      $('#amenitiesInput')   .val(this.amenities);
+    }
+  });
 }
 
 if (Meteor.isServer) {

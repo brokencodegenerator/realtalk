@@ -30,9 +30,7 @@
                 <li><p>Listings</p><button type="button" id="createListingButton" class="btn btn-success">
                 <span class="glyphicon glyphicon-plus"></span> Create</button></li>
             </ul>
-            <ul class="nav nav-sidebar" id="listings">
-            <li class="listing">Test Listing 1<span class="glyphicon glyphicon-gear"></span></li>
-            </ul>
+            {{> listing_list}}
         </div>
     </div>
         <form id="createListingForm" class="form-horizontal" style="display:none">
@@ -150,72 +148,67 @@
 
 <script>
     $('#createListingButton').click(function () {
-        document.getElementById('createListingForm').style.display = "block";
-          $('#amenitiesInput').val("");
-          $('#propertyTypeInput').val("");
-          $('#styleInput').val("");
-          $('#yearBuiltInput').val("");
-          $('#acreInput').val("");
-          $('#squareftInput').val("");
-          $('#bathroomInput').val("");
-          $('#BedroomInput').val("");
-          $('#priceInput').val("");
-          $('#addressInput').val("");
-    });
-    $('.listing').click( function(asd) {
-
-    });
-
-
-
-    
-    $('.btn').button();
-    $('#saveListingButton').click(function () {
-      //save to database
-      //document.getElementById('listings').append();
-      //modal popup that confirms save change
-      document.getElementById('createListingForm').style.display = "none";
-      //show that listing as completed in the panel
-        var amenitiesInput = $('#amenitiesInput').val();
-        var propertyTypeInput = $('#propertyTypeInput').val();
-        var styleInput = $('#styleInput').val();
-        var yearBuiltInput = $('#yearBuiltInput').val();
-        var acreInput = $('#acreInput').val();
-        var squareftInput = $('#squareftInput').val();
-        var bathroomInput = $('#bathroomInput').val();
-        var BedroomInput = $('#BedroomInput').val();
-        var priceInput = $('#priceInput').val();
-        var addressInput = $('#addressInput').val();
-        console.log(addListing(
-          addressInput,
-          BedroomInput,
-          bathroomInput,
-          squareftInput,
-          acreInput,
-          priceInput,
-          yearBuiltInput,
-          styleInput,
-          propertyTypeInput,
-          amenitiesInput));
-    });
+    document.getElementById('createListingForm').style.display = "block";
+    $('#amenitiesInput').val("");
+    $('#propertyTypeInput').val("");
+    $('#styleInput').val("");
+    $('#yearBuiltInput').val("");
+    $('#acreInput').val("");
+    $('#squareftInput').val("");
+    $('#bathroomInput').val("");
+    $('#BedroomInput').val("");
+    $('#priceInput').val("");
+    $('#addressInput').val("");
+  });
+  $('#saveListingButton').click(function () {
+    //save to database
+    //document.getElementById('listings').append();
+    //modal popup that confirms save change
+    document.getElementById('createListingForm').style.display = "none";
+    //show that listing as completed in the panel
+    var amenitiesInput = $('#amenitiesInput').val();
+    var propertyTypeInput = $('#propertyTypeInput').val();
+    var styleInput = $('#styleInput').val();
+    var yearBuiltInput = $('#yearBuiltInput').val();
+    var acreInput = $('#acreInput').val();
+    var squareftInput = $('#squareftInput').val();
+    var bathroomInput = $('#bathroomInput').val();
+    var BedroomInput = $('#BedroomInput').val();
+    var priceInput = $('#priceInput').val();
+    var addressInput = $('#addressInput').val();
+    console.log(addListing(
+      addressInput,
+      BedroomInput,
+      bathroomInput,
+      squareftInput,
+      acreInput,
+      priceInput,
+      yearBuiltInput,
+      styleInput,
+      propertyTypeInput,
+      amenitiesInput
+    ));
+  });
   function sleep(millis, callback) {
-      setTimeout(function()
-              { callback(); }
-      , millis);
+  setTimeout(function()
+  { callback(); }
+  , millis);
   }
-    $('#generateQRCode').click(function () {
-        //call jquery method with survey id of the survey that was just saved
-    });
-    $(document).ready(function(){
-      sleep(500,function(){
+  $('#generateQRCode').click(function () {
+  //call jquery method with survey id of the survey that was just saved
+  });
+  $(document).ready(function(){
+    sleep(1500,function(){
       var one = usersTable.findOne();
       console.log(one);
       var email = one?one.email:false;
       email = email?email:"BatesMatthewJ@Gmail.com";
       $('#userName').html(email);
-
     });
-    })
+  })
+  $('.listing .address').click(function(){
+    console.log($(this).html());
+  });
 
 </script>
 <style>
@@ -224,4 +217,17 @@
 }
 </style>
 </body>
+</template>
+<template name="listing_list">
+  <ul class="nav nav-sidebar" id="listings">
+    {{#each listings}}
+      <li class='listing'>{{> address}}{{> edit}}</li>
+    {{/each}}
+  </ul>
+</template>
+<template name="address">
+  <span class="address">{{address}}</span>
+</template>
+<template name="edit">
+  <span class='glyphicon glyphicon-gear edit'></span>
 </template>
