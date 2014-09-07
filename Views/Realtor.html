@@ -25,9 +25,8 @@
                 <li><p>Listings</p><button type="button" id="createListingButton" class="btn btn-success">
                 <span class="glyphicon glyphicon-plus"></span> Create</button></li>
             </ul>
-            <ul class="nav nav-sidebar" id="listings">
-            <li class="listing">Test Listing 1 <span class="glyphicon glyphicon-gear"></span></li>
-            </ul>
+            {{> sidebar_Listing}}
+
         </div>
         <form id="createListingForm" class="form-horizontal" style="display:none">
             <fieldset>
@@ -152,7 +151,7 @@
     $('#createListingButton').click(function () {
         document.getElementById('createListingForm').style.display = "block";
     });
-    $('.listing').click( function(this) {
+    $('.listing').click( function() {
 
     });
 
@@ -171,4 +170,13 @@
         //call jquery method with survey id of the survey that was just saved
     });
 </script>
+</template>
+<template name="sidebar_Listing">
+  <ul class="nav nav-sidebar" id="listings">
+  {{#each listings}}
+    <li>
+      {{listing_name}}
+    </li>
+  {{/each}}
+  </ul>
 </template>
