@@ -26,6 +26,7 @@
                 <span class="glyphicon glyphicon-plus"></span> Create</button></li>
             </ul>
             <ul class="nav nav-sidebar" id="listings">
+            <li class="listing">Test Listing 1 <span class="glyphicon glyphicon-gear"></span></li>
             </ul>
         </div>
         <form id="createListingForm" class="form-horizontal" style="display:none">
@@ -118,7 +119,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="amenitiesInput">Amenities</label>
               <div class="col-md-4">                     
-                <textarea class="form-control" id="amenitiesInput" name="amenitiesInput">Washer/Dryer, Hot Tub, RollerCoaster, etc...</textarea>
+                <textarea class="form-control" id="amenitiesInput" name="amenitiesInput" placeholder="Washer/Dryer, Hot Tub, RollerCoaster, etc..."></textarea>
               </div>
             </div>
 
@@ -128,19 +129,46 @@
             </div>
             
             <div class="col-md-9">
-                <button type="button" class="btn btn-success">Save</button>
-                <button type="button" class="btn btn-success">Generate QR Code</button>
+                <button type="button" id="saveListingButton" class="btn btn-success">Save</button>
+                <button type="button" id="generateQRCode" class="btn btn-success">Generate QR Code</button>
             </div>
             </fieldset>
         </form>
     </div>
 </div>
 
+
+<div>
+  
+</div>
+
+
+
+
+
+
 </body>
 <script>
     $('#createListingButton').click(function () {
         document.getElementById('createListingForm').style.display = "block";
-    })
+    });
+    $('.listing').click( function(this) {
+
+    });
+
+
+
+    
     $('.btn').button();
+    $('#saveListingButton').click(function () {
+      //save to database
+      document.getElementById('listings').append();
+      //modal popup that confirms save change
+      document.getElementById('createListingForm').style.display = "none";
+      //show that listing as completed in the panel
+    });
+    $('#generateQRCode').click(function () {
+        //call jquery method with survey id of the survey that was just saved
+    });
 </script>
 </template>
