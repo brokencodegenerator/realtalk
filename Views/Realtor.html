@@ -28,8 +28,9 @@
             {{> sidebar_Listing}}
 
         </div>
+    </div>
         <form id="createListingForm" class="form-horizontal" style="display:none">
-            <fieldset>
+            <fieldset style="padding-top:100px">
 
             <!-- Form Name -->
             <legend>Form Name</legend>
@@ -123,7 +124,8 @@
             </div>
 
             <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Pictures</label>  <span class="glyphicon glyphicon-plus btn"></span>
+              <label class="col-md-4 control-label" for="textinput">Pictures</label> 
+              <div class="col-md-4"><span class="glyphicon glyphicon-plus btn pull-right"></span></div>
               <!--Jquery upload file library, add click handler for add picture button-->
             </div>
             
@@ -133,30 +135,12 @@
             </div>
             </fieldset>
         </form>
-    </div>
 </div>
 
-
-<div>
-  
-</div>
-
-
-
-
-
-
-</body>
 <script>
     $('#createListingButton').click(function () {
         document.getElementById('createListingForm').style.display = "block";
     });
-    $('.listing').click( function() {
-
-    });
-
-
-
     
     $('.btn').button();
     $('#saveListingButton').click(function () {
@@ -170,6 +154,12 @@
         //call jquery method with survey id of the survey that was just saved
     });
 </script>
+<style>
+.form-group div{
+  width:400px;
+}
+</style>
+</body>
 </template>
 <template name="sidebar_Listing">
   <ul class="nav nav-sidebar" id="listings">

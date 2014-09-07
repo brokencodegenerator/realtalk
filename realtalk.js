@@ -1,3 +1,7 @@
+questionsTable = new Meteor.Collection("Questions");
+usersTable = new Meteor.Collection("Users");
+listingsTable = new Meteor.Collection("Listings");
+
 if (Meteor.isClient) {
   var Router = Backbone.Router.extend({
     routes: {

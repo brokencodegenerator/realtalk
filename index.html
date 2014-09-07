@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="css/stickyfooter.css">
     </head>
 
-<body>
+<body style = "padding: 0px">
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="navbar-header" style="width:100%;padding:0px 100px 0px 100px;">
@@ -19,25 +19,24 @@
                 <img src='img/realtalk4size.png' style="height:45px;margin-top:-10px">
             </div>
             <div class="navbar-collapse collapse navbar-right">
-                <form class="navbar-form navbar-right" role="form">
+                <div class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
+                        <input id="email" type="text" placeholder="Email" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
+                        <input id="password" type="password" placeholder="Password" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                </form>
+                    <button id="submit" class="btn btn-success">Sign in</button>
+                </div>
             </div><!--/.navbar-collapse -->
         </div>
     </div>
 </div>
 
-<div class="jumbotron" style="padding:30px;background-image:url('img/po2.jpg');width:100%;height:500px;color:#fff;background-size:100%;">
+<div class="jumbotron" style="background-image:url('img/po32.jpg');width:100%;height:500px;color:#fff;background-repeat:no-repeat;background-size:1700px;background-position:center;">
   <div class="container" style="width:100%; max-width:700px; padding-top:96px">
+    <img src='img/realtalk4.png' style="width:400px;margin-top:-36px;">
     <h2>Engage you clients with our robust realty suite.</h2>
-    <br/>
-    <br/>
     <p>Realtalk facilitates communications between you and your client. Use our software to create surveys, prodide your clients with listing information and view stats.</p>
     <br/>
     <p><a class="btn btn-primary btn-lg" role="button">Sign Up Today</a></p>
@@ -48,22 +47,19 @@
             <!-- Example row of columns -->
             <div class="row">
                 <div class="col-md-4">
-                    <img src="/img/info.png" style="width:197px;">
+                    <img src="/img/infokill.png" style="width:197px;height:150px;margin-bottom:1px;">
                     <h2>INFORM</h2>
                     <p>Provide detail to your client about the property they are viewing</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <img src="/img/review.png" style="width:177px;padding-top:5px;padding-bottom:3px;">
                     <h2>REVIEW</h2>
                     <p>Get the clients feedback on the property</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <img src="/img/collect.png" style="margin-left:-5px;margin-top:-15px;margin-bottom:-16px;">
                     <h2>COLLECT</h2>
                     <p>Collect the feedback from all the open house attendees and view detailed statistics</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                 </div>
             </div>
         </div>
@@ -71,10 +67,10 @@
         <br/>
         <div class="container row" style="margin:auto;">
             <div class="col-md-6">
-                <img src="/img/howto.png" style="width:225px;float: right;height:205px;">
+                <img src="/img/howtoi.png" style="width:225px;float: right;height:205px;">
             </div>
             <div class="col-md-6" style="float:left;text-align:left;">
-                <h2 style="margin-top: 5px">How It Works</h2>
+                <h2 style="margin-top: 5px">HOW IT WORKS</h2>
                 <p>Create property listing</p>
                 <p>Generate QR code for listing</p>
                 <p>Post QR code at open house</p>
@@ -89,6 +85,28 @@
                 <h3>&copy; Ram-Development 2014</h3>
             </div>
         </div> <!-- /container -->
+        <script>
+                $('#submit').click(function(){
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+                    console.log(email+","+password);
+                    if(!email || (email.trim().length == 0) || !password || (password.trim().length == 0)){
+                        console.log('Enter an email and password!');
+                        return;
+                    }
+                    var userID = undefined;
+                    if(userID = logUserIn(email, password)){
+                        console.log(userID+' logged in!');
+                        setUser(userID);
+                        document.location.href = "/Realtor";
+                    }else if(userID = addUser(email, password)){
+                        console.log(userID+' created!');
+                        document.location.href = "/Realtor";
+                    }else{
+                        alert('Incorrect login info!');
+                    }
+                });
+        </script>
 </body>
 
 </template>
