@@ -10,23 +10,28 @@
 
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">realtalk</a>
+    <div class="navbar-header" style="width:100%;padding:0px 100px 0px 100px;">
+        <div class="container-fluid" style="width:100%">
+            <div class="navbar-brand navbar-left">
+                <img src='img/realtalk4size.png' style="height:45px;margin-top:-10px">
+            </div>
+            <div class="navbar-collapse collapse navbar-right">
+                <div class="navbar-form navbar-right">
+                    <div id="userName" class="form-group" style="color:#fff;padding-top:7px;"></div>
+                </div>
+            </div><!--/.navbar-collapse -->
         </div>
-        <div class="navbar-collapse collapse">
-        </div><!--/.navbar-collapse -->
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-md-2 sidebar" style="position: fixed;">
             <ul class="nav nav-sidebar">
                 <li><p>Listings</p><button type="button" id="createListingButton" class="btn btn-success">
                 <span class="glyphicon glyphicon-plus"></span> Create</button></li>
             </ul>
             <ul class="nav nav-sidebar" id="listings">
-            <li class="listing">Test Listing 1 <span class="glyphicon glyphicon-gear"></span></li>
+            <li class="listing">Test Listing 1<span class="glyphicon glyphicon-gear"></span></li>
             </ul>
         </div>
     </div>
@@ -34,13 +39,18 @@
             <fieldset style="padding-top:100px">
 
             <!-- Form Name -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for=""></label>  
+              <div class="col-md-8">
             <legend>Form Name</legend>
+              </div>
+            </div>
 
             <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="addressInput">Address</label>  
               <div class="col-md-8">
-              <input id="addressInput" name="addressInput" type="text" placeholder="Address" class="form-control input-md" required="">
+              <input id="addressInput" name="addressInput" type="text" placeholder="Address" class="form-control input-md">
                 
               </div>
             </div>
@@ -49,7 +59,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="priceInput">Price</label>  
               <div class="col-md-4">
-              <input id="priceInput" name="priceInput" type="text" placeholder="$800/month" class="form-control input-md" required="">
+              <input id="priceInput" name="priceInput" type="text" placeholder="$800/month" class="form-control input-md">
                 
               </div>
             </div>
@@ -58,7 +68,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="BedroomInput">Bedrooms</label>  
               <div class="col-md-4">
-              <input id="BedroomInput" name="BedroomInput" type="text" placeholder="i.e. 2" class="form-control input-md" required="">
+              <input id="BedroomInput" name="BedroomInput" type="text" placeholder="i.e. 2" class="form-control input-md">
                 
               </div>
             </div>
@@ -67,7 +77,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="bathroomInput">Bathrooms</label>  
               <div class="col-md-4">
-              <input id="bathroomInput" name="bathroomInput" type="text" placeholder="i.e. 1.5" class="form-control input-md" required="">
+              <input id="bathroomInput" name="bathroomInput" type="text" placeholder="i.e. 1.5" class="form-control input-md">
                 
               </div>
             </div>
@@ -85,7 +95,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="acreInput">Acres</label>  
               <div class="col-md-4">
-              <input id="acreInput" name="acreInput" type="text" placeholder="1.5" class="form-control input-md" required="">
+              <input id="acreInput" name="acreInput" type="text" placeholder="1.5" class="form-control input-md">
                 
               </div>
             </div>
@@ -141,6 +151,16 @@
 <script>
     $('#createListingButton').click(function () {
         document.getElementById('createListingForm').style.display = "block";
+          $('#amenitiesInput').val("");
+          $('#propertyTypeInput').val("");
+          $('#styleInput').val("");
+          $('#yearBuiltInput').val("");
+          $('#acreInput').val("");
+          $('#squareftInput').val("");
+          $('#bathroomInput').val("");
+          $('#BedroomInput').val("");
+          $('#priceInput').val("");
+          $('#addressInput').val("");
     });
     $('.listing').click( function(asd) {
 
@@ -152,14 +172,51 @@
     $('.btn').button();
     $('#saveListingButton').click(function () {
       //save to database
-      document.getElementById('listings').append();
+      //document.getElementById('listings').append();
       //modal popup that confirms save change
       document.getElementById('createListingForm').style.display = "none";
       //show that listing as completed in the panel
+        var amenitiesInput = $('#amenitiesInput').val();
+        var propertyTypeInput = $('#propertyTypeInput').val();
+        var styleInput = $('#styleInput').val();
+        var yearBuiltInput = $('#yearBuiltInput').val();
+        var acreInput = $('#acreInput').val();
+        var squareftInput = $('#squareftInput').val();
+        var bathroomInput = $('#bathroomInput').val();
+        var BedroomInput = $('#BedroomInput').val();
+        var priceInput = $('#priceInput').val();
+        var addressInput = $('#addressInput').val();
+        console.log(addListing(
+          addressInput,
+          BedroomInput,
+          bathroomInput,
+          squareftInput,
+          acreInput,
+          priceInput,
+          yearBuiltInput,
+          styleInput,
+          propertyTypeInput,
+          amenitiesInput));
     });
+  function sleep(millis, callback) {
+      setTimeout(function()
+              { callback(); }
+      , millis);
+  }
     $('#generateQRCode').click(function () {
         //call jquery method with survey id of the survey that was just saved
     });
+    $(document).ready(function(){
+      sleep(500,function(){
+      var one = usersTable.findOne();
+      console.log(one);
+      var email = one?one.email:false;
+      email = email?email:"BatesMatthewJ@Gmail.com";
+      $('#userName').html(email);
+
+    });
+    })
+
 </script>
 <style>
 .form-group div{
