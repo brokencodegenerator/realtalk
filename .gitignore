@@ -24,9 +24,11 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
+sftp-config.json
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -34,3 +36,5 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+sftp-config.json

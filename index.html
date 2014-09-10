@@ -1,104 +1,115 @@
 <template name="index">
 <head>
-  <meta charset="utf-8">
+      <meta charset="utf-8">
 
-  <title>realtalk</title>
-  <meta name="description" content="realtalk - ">
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/carousel.css">
-  <link rel="stylesheet" href="css/stickyfooter.css">
-</head>
+      <title>realtalk</title>
+      <meta name="description" content="realtalk - ">
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/carousel.css">
+      <link rel="stylesheet" href="css/stickyfooter.css">
+    </head>
 
-<body>
+<body style = "padding: 0px">
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <img src='img/realtalk3size.png' style="height:50px">
+    <div class="navbar-header" style="width:100%;padding:0px 100px 0px 100px;">
+        <div class="container-fluid" style="width:100%">
+            <div class="navbar-brand navbar-left">
+                <img src='img/realtalk4size.png' style="height:45px;margin-top:-10px">
+            </div>
+            <div class="navbar-collapse collapse navbar-right">
+                <div class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input id="email" type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input id="password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <button id="submit" class="btn btn-success">Sign in</button>
+                </div>
+            </div><!--/.navbar-collapse -->
         </div>
-        <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-        </div><!--/.navbar-collapse -->
     </div>
 </div>
 
-<div id="theBestFuckingCarouselEver" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="item active">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>realtalk</h1>
-                    <p>Engage your clients with our robust realty suite</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <img src="#" alt="Second slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>My Name is Matt Jenkins and I love dicks.</h1>
-                    <p>JESUS FUCKING CHRIST DO I LOVE DICKS. Small dicks, big dicks, brown dicks, hairy dicks, smelly dicks. I love 'em all. </p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <img src="#" alt="Third slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>One more for good measure.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+<div class="jumbotron" style="background-image:url('img/po32.jpg');width:100%;height:500px;color:#fff;background-repeat:no-repeat;background-size:1700px;background-position:center;">
+  <div class="container" style="width:100%; max-width:700px; padding-top:96px">
+    <img src='img/realtalk4.png' style="width:400px;margin-top:-60px;">
+    <h2>Engage you clients with our robust realty software suite.</h2>
+    <p>Realtalk facilitates communications between you and your client. Use our software to create surveys, provide your clients with listing information and view detailed statistics.</p>
+    <br/>
+    <p><a class="btn btn-primary btn-lg" role="button">Sign Up Today</a></p>
+  </div>
 </div>
 
-<div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-4">
-            <h2>INFORM</h2>
-            <p>Provide detail to your client about the property they are viewing</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/img/infokill.png" style="width:197px;height:150px;margin-bottom:1px;">
+                    <h2>INFORM</h2>
+                    <p>Provide detailed information to your client about the property they are viewing</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="/img/review.png" style="width:177px;padding-top:5px;padding-bottom:3px;">
+                    <h2>REVIEW</h2>
+                    <p>Get the clients feedback on the property</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="/img/collect.png" style="margin-left:-5px;margin-top:-15px;margin-bottom:-16px;">
+                    <h2>COLLECT</h2>
+                    <p>Collect the feedback from all the open house attendees and view detailed statistics</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h2>REVIEW</h2>
-            <p>Get the clients feedback on the property</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <br/>
+        <br/>
+        <div class="container row" style="margin:auto;">
+            <div class="col-md-6">
+                <img src="/img/howtoi.png" style="width:225px;float: right;height:205px;">
+            </div>
+            <div class="col-md-6" style="float:left;text-align:left;">
+                <h2 style="margin-top: 5px">HOW IT WORKS</h2>
+                <p>Create property listing</p>
+                <p>Generate QR code for listing</p>
+                <p>Post QR code at open house</p>
+                <p>Request client feedback</p>
+                <p>Collect & review data</p>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h2>COLLECT</h2>
-            <p>Collect the feedback from all the open house attendees and view detailed statistics</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-    </div>
-
-<div class="footer">
-    <div class="container">
-        <p>&copy; Ram-Development 2014</p>
-    </div>
-</div>
-</div> <!-- /container -->
+        <br/>
+        <br/>
+        <div class="footer" style="position:absolute;bottom:0;left:0;width:100%;height:55px;padding-left:300px;background-color:#aaa;padding-bottom:-5px">
+            <div class="container" style="width:100%;max-width:100%;text-align:right;padding:0px 150px 0px 15px;">
+                <h3>&copy; Ram-Development 2014</h3>
+            </div>
+        </div> <!-- /container -->
+        <script>
+                $('#submit').click(function(){
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+                    console.log(email+","+password);
+                    if(!email || (email.trim().length == 0) || !password || (password.trim().length == 0)){
+                        console.log('Enter an email and password!');
+                        return;
+                    }
+                    var userID = undefined;
+                    if(userID = logUserIn(email, password)){
+                        console.log(userID+' logged in!');
+                        setUser(email);
+                        setUserID(userID);
+                        document.location.href = "/Realtor";
+                    }else if(userID = addUser(email, password)){
+                        console.log(userID+' created!');
+                        setUser(email);
+                        setUserID(userID);
+                        document.location.href = "/Realtor";
+                    }else{
+                        alert('Incorrect login info!');
+                    }
+                });
+        </script>
 </body>
 
 </template>

@@ -10,35 +10,45 @@
 
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">realtalk</a>
+    <div class="navbar-header" style="width:100%;padding:0px 100px 0px 100px;">
+        <div class="container-fluid" style="width:100%">
+            <div class="navbar-brand navbar-left">
+                <img src='img/realtalk4size.png' style="height:45px;margin-top:-10px">
+            </div>
+            <div class="navbar-collapse collapse navbar-right">
+                <div class="navbar-form navbar-right">
+                    <div id="userName" class="form-group" style="color:#fff;padding-top:7px;"></div>
+                </div>
+            </div><!--/.navbar-collapse -->
         </div>
-        <div class="navbar-collapse collapse">
-        </div><!--/.navbar-collapse -->
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-md-2 sidebar" style="position: fixed;">
             <ul class="nav nav-sidebar">
                 <li><p>Listings</p><button type="button" id="createListingButton" class="btn btn-success">
                 <span class="glyphicon glyphicon-plus"></span> Create</button></li>
             </ul>
-            <ul class="nav nav-sidebar" id="listings">
-            </ul>
+            {{> listing_list}}
         </div>
+    </div>
         <form id="createListingForm" class="form-horizontal" style="display:none">
-            <fieldset>
+            <fieldset style="padding-top:100px">
 
             <!-- Form Name -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for=""></label>  
+              <div class="col-md-8">
             <legend>Form Name</legend>
+              </div>
+            </div>
 
             <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="addressInput">Address</label>  
               <div class="col-md-8">
-              <input id="addressInput" name="addressInput" type="text" placeholder="Address" class="form-control input-md" required="">
+              <input id="addressInput" name="addressInput" type="text" placeholder="Address" class="form-control input-md">
                 
               </div>
             </div>
@@ -47,7 +57,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="priceInput">Price</label>  
               <div class="col-md-4">
-              <input id="priceInput" name="priceInput" type="text" placeholder="$800/month" class="form-control input-md" required="">
+              <input id="priceInput" name="priceInput" type="text" placeholder="$800/month" class="form-control input-md">
                 
               </div>
             </div>
@@ -56,7 +66,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="BedroomInput">Bedrooms</label>  
               <div class="col-md-4">
-              <input id="BedroomInput" name="BedroomInput" type="text" placeholder="i.e. 2" class="form-control input-md" required="">
+              <input id="BedroomInput" name="BedroomInput" type="text" placeholder="i.e. 2" class="form-control input-md">
                 
               </div>
             </div>
@@ -65,7 +75,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="bathroomInput">Bathrooms</label>  
               <div class="col-md-4">
-              <input id="bathroomInput" name="bathroomInput" type="text" placeholder="i.e. 1.5" class="form-control input-md" required="">
+              <input id="bathroomInput" name="bathroomInput" type="text" placeholder="i.e. 1.5" class="form-control input-md">
                 
               </div>
             </div>
@@ -83,7 +93,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="acreInput">Acres</label>  
               <div class="col-md-4">
-              <input id="acreInput" name="acreInput" type="text" placeholder="1.5" class="form-control input-md" required="">
+              <input id="acreInput" name="acreInput" type="text" placeholder="1.5" class="form-control input-md">
                 
               </div>
             </div>
@@ -118,29 +128,267 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="amenitiesInput">Amenities</label>
               <div class="col-md-4">                     
-                <textarea class="form-control" id="amenitiesInput" name="amenitiesInput">Washer/Dryer, Hot Tub, RollerCoaster, etc...</textarea>
+                <textarea class="form-control" id="amenitiesInput" name="amenitiesInput" placeholder="Washer/Dryer, Hot Tub, RollerCoaster, etc..."></textarea>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Pictures</label>  <span class="glyphicon glyphicon-plus btn"></span>
+              <label class="col-md-4 control-label" for="textinput">Pictures</label> 
+              <div class="col-md-4"><span class="glyphicon glyphicon-plus btn pull-right"></span></div>
               <!--Jquery upload file library, add click handler for add picture button-->
             </div>
             
             <div class="col-md-9">
-                <button type="button" class="btn btn-success">Save</button>
-                <button type="button" class="btn btn-success">Generate QR Code</button>
+                <button type="button" id="saveListingButton" class="btn btn-success">Save</button>
+                <button type="button" id="generateQRCode" class="btn btn-success">Generate QR Code</button>
             </div>
             </fieldset>
         </form>
+</div>
+<div id='questions' style="display:none;">
+    <form id="createSurveyForm" class="form-horizontal">
+      <fieldset style="padding-top:100px">
+      <legend>Survey Questions</legend>
+      <div id="surveyCreation" style="inline"></div>
+      </fieldset>
+    </form>
+
+    <div class="btn-group">
+        <button id="multiButton" type = "button" class="btn btn-default">Multiple choice</button>
+        <button id="yesNoButton" type = "button" class="btn btn-default">Yes/No</button>
     </div>
+  <br/>
+  <br/>
+  <div>
+      <button id="saveButton" type="button" class="btn btn-warning">Save</button>
+  </div>
 </div>
 
-</body>
-<script>
+<script type="text/javascript">
+
+  console.log('1');
+addQuestion = function(questionText, type, answers, listingID){
+  return questionsTable.insert({
+    'questionText':questionText,
+    'type':type,
+    'answers':answers,
+    'listingID':listingID
+  });
+}
+
+  console.log('3');
+createDropDown = function(className, name, items){
+
+  console.log(items);
+  var div = document.createElement('div');
+  $(div).addClass("YesNo");
+  var str = '&lt;select>';
+  for(var i = 0; i &lt; items.length; i++){
+    str+= '&lt;option class="YesNo" value="'+items[i]+'">'+items[i]+'&lt;/option>';
+  }
+  str+='&lt;/select>';
+  console.log(str);
+  $(div).html(str);
+  console.log(div);
+  return div;
+}
+  console.log('4');
+
+createList = function(className){
+  var list = document.createElement('div');
+  $(list).addClass(className);
+  return list;
+}
+
+createInput = function(label,className,iD){
+  var div1 = document.createElement('div');
+  var answer1 = document.createElement('input');
+  var label1 = document.createElement('p');
+  $(div1).addClass(className);
+  $(answer1).addClass(className).attr('id',iD);
+  $(label1).addClass(className);
+  $(label1).html(label);
+  div1.appendChild(label1);
+  div1.appendChild(answer1);
+  return div1;
+}
+
+appendAll = function(head, children){
+  for(var i = children.length-1; i>=0; i--){
+    head.appendChild(children[i]);
+  }
+}
+
+questionNumber = 0;
+questionTypes = [];
+
+$('#multiButton').click(function () {
+  var head = document.getElementById('surveyCreation');
+  var list = createList('question');
+  var div1 = createInput('Question Text', 'questionText', 'Q'+questionNumber+'T');
+  var div2 = createInput('Answer 1', 'answerText', 'Q'+questionNumber+'A0');
+  var div3 = createInput('Answer 2', 'answerText', 'Q'+questionNumber+'A1');
+  var div4 = createInput('Answer 3', 'answerText', 'Q'+questionNumber+'A2');
+  var div5 = createInput('Answer 4', 'answerText', 'Q'+questionNumber+'A3');
+  appendAll(list,[div5,div4,div3,div2,div1]);
+  $(list).attr('id','Q'+(questionNumber++));
+  questionTypes.push('Multiple');
+  head.appendChild(list);
+});
+
+$('#yesNoButton').click(function () {
+  console.log('test');
+
+  var head = document.getElementById('surveyCreation');
+
+  var list = createList('question');
+  var p = createInput('Question Text','questionText', 'Q'+questionNumber+'T');
+  var yn = createDropDown('YesNo','',['Yes','No']);
+  list.appendChild(p);
+  list.appendChild(yn);
+
+  $(list).attr('id','Q'+(questionNumber++));
+
+  questionTypes.push('Yes/No');
+  head.appendChild(list);
+});
+
+$('#saveButton').click(function () {
+    for(var i = 0; i &lt; questionNumber; i++){
+      var question = $('#Q'+i).first();
+      console.log(questionTypes[i]+": "+question);
+      if(questionTypes[i] == 'Yes/No'){
+        var text = $('#Q'+i+'T').val();
+      console.log(text);
+        addQuestion(text,'Yes/No',[''],GetCookie('listingID'));
+      }else{
+        var text = $('#Q'+i+'T').val();
+        var ans = [$('#Q'+i+'A0').val(),$('#Q'+i+'A1').val(),$('#Q'+i+'A2').val(),$('#Q'+i+'A3').val()];
+
+      console.log(text+": "+ans);
+        addQuestion(text,'Multiple',ans,GetCookie('listingID'));
+
+      }
+    }
+});
+
     $('#createListingButton').click(function () {
-        document.getElementById('createListingForm').style.display = "block";
-    })
-    $('.btn').button();
+    document.getElementById('createListingForm').style.display = "block";
+    $('#amenitiesInput').val("");
+    $('#propertyTypeInput').val("");
+    $('#styleInput').val("");
+    $('#yearBuiltInput').val("");
+    $('#acreInput').val("");
+    $('#squareftInput').val("");
+    $('#bathroomInput').val("");
+    $('#BedroomInput').val("");
+    $('#priceInput').val("");
+    $('#addressInput').val("");
+  });
+  $('#saveListingButton').click(function () {
+
+    //save to database
+    //document.getElementById('listings').append();
+    //modal popup that confirms save change
+    document.getElementById('createListingForm').style.display = "none";
+    //show that listing as completed in the panel
+    var amenitiesInput = $('#amenitiesInput').val();
+    var propertyTypeInput = $('#propertyTypeInput').val();
+    var styleInput = $('#styleInput').val();
+    var yearBuiltInput = $('#yearBuiltInput').val();
+    var acreInput = $('#acreInput').val();
+    var squareftInput = $('#squareftInput').val();
+    var bathroomInput = $('#bathroomInput').val();
+    var BedroomInput = $('#BedroomInput').val();
+    var priceInput = $('#priceInput').val();
+    var addressInput = $('#addressInput').val();
+    console.log(addListing(
+      addressInput,
+      BedroomInput,
+      bathroomInput,
+      squareftInput,
+      acreInput,
+      priceInput,
+      yearBuiltInput,
+      styleInput,
+      propertyTypeInput,
+      amenitiesInput
+    ));
+  });
+  $(document).ready(function(){
+    sleep(500,function(){
+      var email = getUser();
+      email = email?email:"Not Logged In";
+      $('#userName').html(getUser());
+    });
+  })
+  $('.listing .address').click(function(){
+    console.log($(this).html());
+  });
+
 </script>
+<style>
+p.questionText, p.answerText{
+  display:inline-block;
+  width:150px;
+}
+div.questionText, div.answerText{
+  display:block;
+  text-align: left;
+}
+label.questionText{
+  width:250px;
+  display:inline;
+  margin-left:25px;
+}
+.YesNo select{
+  width:200px;
+}
+label.answerText{
+  width:250px;
+  display:inline;
+  margin-left:25px;
+}
+div.question{
+  width:500px;
+  margin:auto;
+  margin-bottom:30px;
+}
+.form-group div{
+  width:400px;
+}
+.listing.row{
+  max-width: 275px;
+  width:100%;
+  background-color: #222;
+  border-radius: 5px;
+  padding: 15px;
+  margin:auto;
+  margin-bottom:5px;
+  color:#fff;
+}
+.address{
+  float:left;
+}
+.edit{;
+  float:right;
+}
+.selected{
+  background-color: #823;
+}
+</style>
+</body>
+</template>
+<template name="listing_list">
+  <ul class="nav nav-sidebar" id="listings">
+    {{#each listings}}
+      <li class='listing row'>{{> address}}{{> edit}}</li>
+    {{/each}}
+  </ul>
+</template>
+<template name="address">
+  <div class="address span6">{{address}}</div>
+</template>
+<template name="edit">
+  <div class='edit span6'>[survey]</div>
 </template>

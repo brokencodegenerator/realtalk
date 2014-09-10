@@ -1,0 +1,89 @@
+<template name="ClientSurvey">
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		    <div class="navbar-header" style="width:100%;">
+		        <div class="container-fluid" style="width:100%">
+		            <div class="navbar-brand" style="width:100%">
+		                <img src='img/realtalk4size.png' style="height:45px;margin-left:auto;margin-right:auto;margin-top:-10px">
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div style="height:60px"></div>
+		<div>
+			<img src="img/house1.jpg" class="housePic">
+			<h2 class="address">1183 Schar Rd, 25940</h2>
+		</div>
+		<ul id="surveyContainer" class="survey">
+		</ul>
+			<div>
+	    <button id="saveButton" type="button" class="btn btn-warning">Save</button>
+	</div>
+	</body>
+	<script>
+	addQuestion = function(question, i){
+		if(question.type=='Yes/No'){
+			var div = document.createElement('div');
+			console.log(question);
+			div.innerHTML="&lt;p>"+question.questionText+"&lt;/p>&lt;select id='Q"+i+"'>&lt;option>Yes&lt;/option>&lt;option>No&lt;/option>&lt;/select>";
+			$('#surveyContainer').append(div);
+		}else{
+			var div = document.createElement('div');
+			console.log(question);
+			div.innerHTML="&lt;p>"+question.questionText+"&lt;/p>&lt;select id='Q"+i+"'>&lt;option>"+question.answers[0]+"&lt;/option>&lt;option>"+question.answers[1]+"&lt;/option>&lt;option>"+question.answers[2]+"&lt;/option>&lt;option>"+question.answers[3]+"&lt;/option>&lt;/select>";
+			$('#surveyContainer').append(div);
+		}
+		$('#surveyContainer').append();
+		qids.push(question._id);
+	}
+	amtQuestions = 0;
+	qids = [];
+	$(document).ready(function(){
+		sleep(500,function(){
+			var listingID = GetCookie('listingID');
+			console.log(listingID);
+			var questions = getQuestions(listingID);
+			
+			questions.forEach(function(x){
+				console.log(x);
+				addQuestion(x,++amtQuestions);
+			});			
+		});
+	});
+	$('#saveButton').click(function(){
+		for(var i = 1; i &lt;= amtQuestions; i++){
+			var ans = $("#Q"+i+">option:selected").html();
+			if(ans == undefined){
+				ans = $("#Q"+i).val();
+			}
+			addAnswer(qids[i],ans);
+			console.log(qids[i]+','+ans);
+		}
+	})
+	</script>
+	<style>
+	.row.maxwidth{
+		margin-left:0px;
+		margin-right:0px;
+	}
+	.max-width{
+		max-width:100%;
+	}
+	.btn-thrd{
+		width:40%;
+	}
+	.housePic{
+		max-width:90%;
+		height:200px;
+	}
+	.address{
+		max-width:80%;
+		margin:auto;
+		margin-top:10px;
+		color:#000;
+	}
+	.large{
+		width:80%;
+	}
+	</style>
+</template>
