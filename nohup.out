@@ -1,14 +1,0 @@
-
-[1mStand back while Meteorite does its thing[22m
-
-[1mDone installing smart packages[22m
-
-[32mOk, everything's ready. Here comes Meteor![39m
-
-[[[[[ /home/realtalk ]]]]]
-
-=> Started proxy.
-=> Starting MongoDB... -                        => Starting MongoDB... \                        => Starting MongoDB... |                        => Starting MongoDB... /                        => Starting MongoDB... -                        => Starting MongoDB... \                        => Starting MongoDB... |                        => Starting MongoDB... /                        => Started MongoDB.
-=> Starting your app...                       => Started your app.
-
-=> App running at: http://localhost:3000/

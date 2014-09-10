@@ -162,6 +162,22 @@
   <div>
       <button id="saveButton" type="button" class="btn btn-warning">Save</button>
   </div>
+
+</div>
+
+  <form id="createSurveyForm" class="form-horizontal">
+    <fieldset style="padding-top:100px">
+      <legend>Survey Questions</legend>
+      <div id="surveyCreation" style="inline"></div>
+    </fieldset>
+  </form>
+
+<div class="btn-group">
+    <button id="multiButton" type = "button" class="btn btn-default">Multiple choice</button>
+    <button id="yesNoButton" type = "button" class="btn btn-default">Yes/No</button>
+    <button id="checkBoxButton" type = "button" class="btn btn-default">CheckBox</button>
+    <button id="sliderButton" type = "button" class="btn btn-default">Slider</button>
+    <button id="commentButton" type = "button" class="btn btn-default">Comments Box</button>
 </div>
 
 <script type="text/javascript">
@@ -270,9 +286,8 @@ $('#saveButton').click(function () {
 
       }
     }
-});
-
-    $('#createListingButton').click(function () {
+  });
+  $('#createListingButton').click(function () {
     document.getElementById('createListingForm').style.display = "block";
     $('#amenitiesInput').val("");
     $('#propertyTypeInput').val("");
@@ -286,7 +301,6 @@ $('#saveButton').click(function () {
     $('#addressInput').val("");
   });
   $('#saveListingButton').click(function () {
-
     //save to database
     //document.getElementById('listings').append();
     //modal popup that confirms save change
@@ -314,6 +328,9 @@ $('#saveButton').click(function () {
       propertyTypeInput,
       amenitiesInput
     ));
+  });
+  $('#generateQRCode').click(function () {
+  //call jquery method with survey id of the survey that was just saved
   });
   $(document).ready(function(){
     sleep(500,function(){
